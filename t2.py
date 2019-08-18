@@ -39,3 +39,4 @@ form_data = {
 
 
 r = requests.post(url = URL, data = form_data)
+print(r.text)
