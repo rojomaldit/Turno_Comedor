@@ -24,11 +24,17 @@ user = "0475D9542DE289D"
 login_data = "--" + boundary + "\nContent-Disposition: form-data; name=\"cstoken\"\n\n" + cstoken  + "\n--" + boundary + "\nContent-Disposition: form-data; name=\"form_2689_datos\"\n\n" + "ingresar" + "\n--" + boundary  + "\nContent-Disposition: form-data; name=\"form_2689_datos_implicito\"\n\n" + "\n--" + boundary  + "\nContent-Disposition: form-data; name=\"ef_form_2689_datosusuario\"\n\n" + user + "\n--" + boundary  + "--"
 
 
-data = {
-    'ah':'st5d5963a74a6a18.86069042',
-    'ai': 'migestion||3614',
+query_str_params = {
+    'ah' : ah,
+    'ai' : ai,
+}
+
+form_data = {
+    'cstoken' : cstoken,
+    'form_2689_datos' : 'ingresar',
+    'form_2689_datos_implicito' : '',
+    'ef_form_2689_datosusuario' : user
 }
 
 
-r = requests.post(url = URL, data = data)
-#print(r.text)
+r = requests.post(url = URL, data = form_data)
