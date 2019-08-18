@@ -1,8 +1,6 @@
 # importing the requests library 
 from bs4 import BeautifulSoup
 import requests 
-import random
-import re
 import string
 
 session = requests.Session()
@@ -35,7 +33,7 @@ data = response.text
 
 #RESERVATION
 ah, ai, path, cstoken = get_data(response)
-reservarion_data = "--" + boundary + "\nContent-Disposition: form-data; name=\"cstoken\"\n\n"+ cstoken + "\n--" + boundary + "\nContent-Disposition: form-data; name=\"ci_2695\"\n\n"+ "procesar"+ "\n--" + boundary + "\nContent-Disposition: form-data; name=\"ci_2695__param\"\n\n"+ "undefined" + "\n--" + boundary + "--"
+reservarion_data = "--" + boundary + cd + " name=\"cstoken\"\n\n"+ cstoken + "\n--" + boundary + cd + " name=\"ci_2695\"\n\n"+ "procesar"+ "\n--" + boundary + cd + " name=\"ci_2695__param\"\n\n"+ "undefined" + "\n--" + boundary + "--"
 
 response = session.request("POST", path, data = reservarion_data, headers = {'cache-control': "no-cache", 'Content-Type' : "multipart/form-data; boundary=" + boundary})
 
