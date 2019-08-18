@@ -36,7 +36,7 @@ def process_data(token, boundary, user_data="") :
 
 def do_login(app_path, cstoken, boundary):
 	post_data = login_data(cstoken, boundary)
-	print(post_data)
+	
 	response = session.request("POST",
 		url + app_path, 
 		data = post_data,
@@ -88,7 +88,9 @@ Primer peticion a la pagina de login
 """
 response = session.request("GET", url + "/", data="", headers={ 'cache-control': "no-cache" })
 login = response.text
+print(login)
 parsed = parse_web(login)
+
 #print("Before login => " + str(parsed))
 """
 Empieza a preparar la request para el login
@@ -96,6 +98,7 @@ Empieza a preparar la request para el login
 boundary = generate_boundary()
 profile = do_login(parsed["path"], parsed["token"], boundary)
 #print(profile)
+print(parsed["token"])
 parsed = parse_web(profile)
 """
 Empieza a preparar la request para la reservacion
