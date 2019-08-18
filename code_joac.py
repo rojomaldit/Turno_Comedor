@@ -36,7 +36,7 @@ def process_data(token, boundary, user_data="") :
 
 def do_login(app_path, cstoken, boundary):
 	post_data = login_data(cstoken, boundary)
-	#print(post_data)
+	print(post_data)
 	response = session.request("POST",
 		url + app_path, 
 		data = post_data,
@@ -95,9 +95,8 @@ Empieza a preparar la request para el login
 """
 boundary = generate_boundary()
 profile = do_login(parsed["path"], parsed["token"], boundary)
+#print(profile)
 parsed = parse_web(profile)
-print(parsed)
-#print("After login => " + str(parsed))
 """
 Empieza a preparar la request para la reservacion
 #reserve_profile = do_process(app_path, cstoken, boundary)
