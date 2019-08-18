@@ -12,8 +12,9 @@ page = urllib2.urlopen(URL)
 soup = BeautifulSoup(page, 'html.parser')
 
 cstoken = soup.find('input', attrs={'id': 'cstoken'})["value"]
-ah = str(soup.find('form', attrs={'id': 'formulario_toba'})['action']).split('&')[0].split('=')[1]
-ai = str(soup.find('form', attrs={'id': 'formulario_toba'})['action']).split('&')[1].split('=')[1]
+form = str(soup.find('form', attrs={'id': 'formulario_toba'})['action'])
+ah = form.split('&')[0].split('=')[1]
+ai = form.split('&')[1].split('=')[1]
 print(cstoken, ah, ai)
   
 # api-endpoint 
@@ -25,10 +26,11 @@ login_data = "--" + boundary + "\nContent-Disposition: form-data; name=\"cstoken
 
 
 data = {
-    'ah':'st5d5963a74a6a18.86069042',
-    'ai': 'migestion||3614',
+    'ah': ah,
+    'ai': ai,
+    'value': user,
 }
 
 
 r = requests.post(url = URL, data = data)
-#print(r.text)
+print(r.text)
