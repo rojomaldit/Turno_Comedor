@@ -6,7 +6,7 @@ import urllib2
 import requests
 
 #Get dates
-URL = "http://comedor.unc.edu.ar/reserva"
+URL = "http://comedor.unc.edu.ar/reserva/"
 
 page = urllib2.urlopen(URL)
 soup = BeautifulSoup(page, 'html.parser')
@@ -15,7 +15,8 @@ cstoken = soup.find('input', attrs={'id': 'cstoken'})["value"]
 form = str(soup.find('form', attrs={'id': 'formulario_toba'})['action'])
 ah = form.split('&')[0].split('=')[1]
 ai = form.split('&')[1].split('=')[1]
-print(cstoken, ah, ai)
+path = URL + "aplicacion.php?" + "ah=" + ah + "&ai=" + ai
+print(cstoken, ah, ai, path)
   
 # api-endpoint 
 
