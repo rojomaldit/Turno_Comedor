@@ -31,22 +31,8 @@ boundary = "----WebKitFormBoundary" + ''.join(random.choice(string.ascii_upperca
 user = "0475D9542DE289D"
 
 login_data = "--" + boundary + "\nContent-Disposition: form-data; name=\"cstoken\"\n\n" + cstoken  + "\n--" + boundary + "\nContent-Disposition: form-data; name=\"form_2689_datos\"\n\n" + "ingresar" + "\n--" + boundary  + "\nContent-Disposition: form-data; name=\"form_2689_datos_implicito\"\n\n" + "\n--" + boundary  + "\nContent-Disposition: form-data; name=\"ef_form_2689_datosusuario\"\n\n" + user + "\n--" + boundary  + "--"
-print(login_data)
-query_str_params = {
-    'ah' : ah,
-    'ai' : ai,
-}
 
-form_data = {
-    'cstoken' : cstoken,
-    'form_2689_datos' : 'ingresar',
-    'form_2689_datos_implicito' : '',
-    'ef_form_2689_datosusuario' : user1
-}
-
-response = session.request("POST", URL + path, data = login_data, headers = {'cache-control': "no-cache", 'Content-Type' : "multipart/form-data; boundary=" + boundary})
+response = session.request("POST", path, data = login_data, headers = {'cache-control': "no-cache", 'Content-Type' : "multipart/form-data; boundary=" + boundary})
 data = response.text
 print(data)
 
-r = requests.post(url = URL, data = form_data)
-#print(r.text)
