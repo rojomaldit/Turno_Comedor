@@ -88,8 +88,8 @@ Primer peticion a la pagina de login
 """
 response = session.request("GET", url + "/", data="", headers={ 'cache-control': "no-cache" })
 login = response.text
-print(login)
 parsed = parse_web(login)
+print(parsed)
 
 #print("Before login => " + str(parsed))
 """
@@ -97,9 +97,9 @@ Empieza a preparar la request para el login
 """
 boundary = generate_boundary()
 profile = do_login(parsed["path"], parsed["token"], boundary)
-#print(profile)
-print(parsed["token"])
 parsed = parse_web(profile)
+print(parsed)
+
 """
 Empieza a preparar la request para la reservacion
 #reserve_profile = do_process(app_path, cstoken, boundary)
